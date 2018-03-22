@@ -3,7 +3,6 @@ package com.shuats.caleb.connectfour;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -28,7 +27,19 @@ public class Main extends Application {
         Pane menuPane = (Pane) rootGridPane.getChildren().get(0);
         menuPane.getChildren().addAll(menuBar);
 
+//        Pane playerDetails = controller.playerDetails;
+
+//        TextField playerOneName = controller.playerOneName;
+//        TextField playerTwoName = controller.playerTwoName;
+//
+//        Button submitButton = controller.submitButton;
+//        submitButton.setOnAction(event -> {
+//            controller.setPlayerOne(playerOneName.getText());
+//            controller.setPlayerTwo(playerTwoName.getText());
+//        });
+
         Scene scene = new Scene(rootGridPane);
+
         primaryStage.setScene(scene);
         primaryStage.setTitle("Connect 4");
         primaryStage.setResizable(false);
@@ -39,11 +50,11 @@ public class Main extends Application {
 
         //File Menu Items
         MenuItem newGame = new MenuItem("New Game");
-        newGame.setOnAction(event -> resetGame());
-        
+        newGame.setOnAction(event -> controller.resetGame());
+
         MenuItem restartGame = new MenuItem("Restart Game");
-        restartGame.setOnAction(event -> resetGame());
-        
+        restartGame.setOnAction(event -> controller.resetGame());
+
         SeparatorMenuItem separatorMenuItem1 = new SeparatorMenuItem();
         MenuItem exitGame = new MenuItem("Exit Game");
         exitGame.setOnAction(event -> exitGame());
@@ -92,9 +103,6 @@ public class Main extends Application {
     private void exitGame() {
         Platform.exit();
         System.exit(0);
-    }
-
-    private void resetGame() {
     }
 
     public static void main(String[] args) {
